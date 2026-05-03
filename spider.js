@@ -4182,7 +4182,7 @@ break;
                                 isForwarded: true,
                                 forwardedNewsletterMessageInfo: {
                                     newsletterJid: '120363426849718986@newsletter',
-                                    newsletterName: "𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
+                                    newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
                                     serverMessageId: 125
                                 }
                             }
