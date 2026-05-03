@@ -2,7 +2,7 @@ const {
     proto,
     downloadContentFromMessage,
     getContentType
-} const baileys = require("@whiskeysockets/baileys")
+} = require('baileys')
 const fs = require('fs')
 
 const downloadMediaMessage = async (m, filename) => {
@@ -134,79 +134,68 @@ const sms = (conn, m) => {
     m.replyImg = (img, teks, id = m.chat, option = { mentions: [m.sender] }) => {
         const content = typeof img === 'string' && img.startsWith('http') ? { url: img } : img
         return conn.sendMessage(id, {
-const { proto, downloadContentFromMessage } = require("@whiskeysockets/baileys");
-
-function smsg(conn, m, store) {
-    if (!m) return m;
-
-    // Normalisation message
-    const msg = m;
-
-    if (msg.key) {
-        msg.id = msg.key.id;
-        msg.chat = msg.key.remoteJid;
-        msg.fromMe = msg.key.fromMe;
-        msg.isGroup = msg.chat.endsWith("@g.us");
-
-        msg.sender = msg.fromMe
-            ? conn.user.id.split(":")[0] + "@s.whatsapp.net"
-            : msg.participant || msg.key.participant || msg.chat;
+            image: content,
+            caption: String(teks || ''),
+            contextInfo: {
+                mentionedJid: option.mentions,
+                forwardingScore: 999,
+                isForwarded: true,
+                externalAdReply: {
+                    title: "𝚈𝙾𝚄-𝙼𝙳 𝙼𝙴𝙽𝚄",
+                    body: "Aᴜᴛᴏᴍᴀᴛᴇᴅ Bᴏᴛ Bʏ Yᴏᴜ",
+                    thumbnail: content, 
+                    mediaType: 1,
+                    renderLargerThumbnail: false
+                }
+            }
+        }, { quoted: m })
     }
 
-    // Extraction texte (tous types)
-    msg.text =
-        msg.message?.conversation ||
-        msg.message?.extendedTextMessage?.text ||
-        msg.message?.imageMessage?.caption ||
-        msg.message?.videoMessage?.caption ||
-        msg.message?.buttonsResponseMessage?.selectedButtonId ||
-        msg.message?.listResponseMessage?.singleSelectReply?.selectedRowId ||
-        msg.message?.templateButtonReplyMessage?.selectedId ||
-        "";
-
-    // Reply facile
-    msg.reply = (text, options = {}) => {
-        return conn.sendMessage(
-            msg.chat,
-            { text, ...options },
-            { quoted: msg }
-        );
-    };
-
-    // Detect type message
-    msg.type =
-        Object.keys(msg.message || {})[0] || null;
-
-    // Download media helper
-    msg.download = async () => {
-        try {
-            let type = Object.keys(msg.message || {})[0];
-
-            let stream = await downloadContentFromMessage(
-                msg.message[type],
-                type.replace("Message", "")
-            );
-
-            let buffer = Buffer.from([]);
-
-            for await (const chunk of stream) {
-                buffer = Buffer.concat([buffer, chunk]);
+    m.replyVid = (vid, teks, id = m.chat, option = { mentions: [m.sender], gif: false }) => {
+        const content = typeof vid === 'string' && vid.startsWith('http') ? { url: vid } : vid
+        return conn.sendMessage(id, {
+            video: content,
+            caption: String(teks || ''),
+            gifPlayback: option.gif,
+            contextInfo: {
+                mentionedJid: option.mentions,
+                forwardingScore: 999,
+                isForwarded: true
             }
+        }, { quoted: m })
+    }
 
-            return buffer;
-        } catch (e) {
-            console.log("Download error:", e);
-            return null;
+    m.replyAud = (aud, id = m.chat, option = { mentions: [m.sender], ptt: false }) => {
+        const content = typeof aud === 'string' && aud.startsWith('http') ? { url: aud } : aud
+        return conn.sendMessage(id, {
+            audio: content,
+            ptt: option.ptt,
+            mimetype: 'audio/mpeg',
+            contextInfo: { mentionedJid: option.mentions }
+        }, { quoted: m })
+    }
+
+    m.replyDoc = (doc, id = m.chat, option = { mentions: [m.sender], filename: '𝚈𝙾𝚄-𝙼𝙳.pdf', mimetype: 'application/pdf' }) => {
+        const content = typeof doc === 'string' && doc.startsWith('http') ? { url: doc } : doc
+        return conn.sendMessage(id, {
+            document: content,
+            mimetype: option.mimetype,
+            fileName: option.filename,
+            contextInfo: { mentionedJid: option.mentions }
+        }, { quoted: m })
+    }
+
+    m.react = (emoji) => conn.sendMessage(m.chat, {
+        react: {
+            text: emoji,
+            key: m.key
         }
-    };
+    })
 
-    // Detect media types
-    msg.isImage = msg.type === "imageMessage";
-    msg.isVideo = msg.type === "videoMessage";
-    msg.isAudio = msg.type === "audioMessage";
-    msg.isSticker = msg.type === "stickerMessage";
-
-    return msg;
+    return m
 }
 
-module.exports = smsg;
+module.exports = {
+    sms,
+    downloadMediaMessage
+                                                    }
