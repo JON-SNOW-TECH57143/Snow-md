@@ -6,7 +6,7 @@ const {
     DisconnectReason, 
     makeCacheableSignalKeyStore, 
     Browsers 
-} = require('baileys');
+} = require('@whiskeysockets/baileys');
 const { sms } = require('./smsg');
 const pino = require('pino');
 const path = require('path');
