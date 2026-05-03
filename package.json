@@ -2,11 +2,11 @@
   "name": "snow-md",
   "version": "2.0.0",
   "description": "Advanced WhatsApp Multi Device Bot",
-  "main": "spider.js",
+  "main": "api.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node spider.js",
-    "dev": "nodemon spider.js",
+    "start": "node api.js",
+    "dev": "nodemon api.js",
     "restart": "pm2 restart snow-md",
     "stop": "pm2 stop snow-md"
   },
