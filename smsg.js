@@ -1,8 +1,8 @@
-const {
+hereconst {
     proto,
     downloadContentFromMessage,
     getContentType
-} = require('baileys')
+} = require('@whiskeysockets/baileys')
 const fs = require('fs')
 
 const downloadMediaMessage = async (m, filename) => {
@@ -198,4 +198,4 @@ const sms = (conn, m) => {
 module.exports = {
     sms,
     downloadMediaMessage
-                                                    }
+        }
