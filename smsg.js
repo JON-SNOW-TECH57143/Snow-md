@@ -5,7 +5,6 @@ const {
 } = require('@whiskeysockets/baileys')
 
 const fs = require('fs')
-const path = require('path')
 
 const downloadMediaMessage = async (m, filename) => {
     try {
@@ -43,7 +42,7 @@ const downloadMediaMessage = async (m, filename) => {
         if (filename) {
             const save = `${filename}.${ext}`
             fs.writeFileSync(save, buffer)
-            return fs.readFileSync(save)
+            return save
         }
 
         return buffer
@@ -149,7 +148,7 @@ const sms = (conn, m) => {
                         delete: m.quoted.fakeObj.key
                     })
 
-                m.quoted.react = emoji =>
+                m.quoted.react = (emoji) =>
                     conn.sendMessage(m.chat, {
                         react: {
                             text: emoji,
@@ -157,12 +156,12 @@ const sms = (conn, m) => {
                         }
                     })
 
-                m.quoted.download = file =>
+                m.quoted.download = (file) =>
                     downloadMediaMessage(m.quoted, file)
             }
         }
 
-        m.download = file => downloadMediaMessage(m, file)
+        m.download = (file) => downloadMediaMessage(m, file)
     }
 
     m.reply = (text, jid = m.chat, opt = {}) =>
@@ -235,7 +234,7 @@ const sms = (conn, m) => {
             { quoted: m }
         )
 
-    m.react = emoji =>
+    m.react = (emoji) =>
         conn.sendMessage(m.chat, {
             react: {
                 text: emoji,
@@ -249,94 +248,4 @@ const sms = (conn, m) => {
 module.exports = {
     sms,
     downloadMediaMessage
-}                    react: {
-                        text: emoji,
-                        key: m.quoted.fakeObj.key
-                    }
-                })
-            }
-        }
-        m.download = (filename) => downloadMediaMessage(m, filename)
     }
-
-    // --- FONCTIONS DE RÉPONSE AMÉLIORÉES ---
-
-    m.reply = (teks, id = m.chat, option = { mentions: [m.sender] }) => {
-        return conn.sendMessage(id, {
-            text: String(teks || ''),
-            contextInfo: {
-                mentionedJid: option.mentions,
-                forwardingScore: 999,
-                isForwarded: true
-            }
-        }, { quoted: m })
-    }
-
-    m.replyImg = (img, teks, id = m.chat, option = { mentions: [m.sender] }) => {
-        const content = typeof img === 'string' && img.startsWith('http') ? { url: img } : img
-        return conn.sendMessage(id, {
-            image: content,
-            caption: String(teks || ''),
-            contextInfo: {
-                mentionedJid: option.mentions,
-                forwardingScore: 999,
-                isForwarded: true,
-                externalAdReply: {
-                    title: "𝚈𝙾𝚄-𝙼𝙳 𝙼𝙴𝙽𝚄",
-                    body: "Aᴜᴛᴏᴍᴀᴛᴇᴅ Bᴏᴛ Bʏ Yᴏᴜ",
-                    thumbnail: content, 
-                    mediaType: 1,
-                    renderLargerThumbnail: false
-                }
-            }
-        }, { quoted: m })
-    }
-
-    m.replyVid = (vid, teks, id = m.chat, option = { mentions: [m.sender], gif: false }) => {
-        const content = typeof vid === 'string' && vid.startsWith('http') ? { url: vid } : vid
-        return conn.sendMessage(id, {
-            video: content,
-            caption: String(teks || ''),
-            gifPlayback: option.gif,
-            contextInfo: {
-                mentionedJid: option.mentions,
-                forwardingScore: 999,
-                isForwarded: true
-            }
-        }, { quoted: m })
-    }
-
-    m.replyAud = (aud, id = m.chat, option = { mentions: [m.sender], ptt: false }) => {
-        const content = typeof aud === 'string' && aud.startsWith('http') ? { url: aud } : aud
-        return conn.sendMessage(id, {
-            audio: content,
-            ptt: option.ptt,
-            mimetype: 'audio/mpeg',
-            contextInfo: { mentionedJid: option.mentions }
-        }, { quoted: m })
-    }
-
-    m.replyDoc = (doc, id = m.chat, option = { mentions: [m.sender], filename: '𝚈𝙾𝚄-𝙼𝙳.pdf', mimetype: 'application/pdf' }) => {
-        const content = typeof doc === 'string' && doc.startsWith('http') ? { url: doc } : doc
-        return conn.sendMessage(id, {
-            document: content,
-            mimetype: option.mimetype,
-            fileName: option.filename,
-            contextInfo: { mentionedJid: option.mentions }
-        }, { quoted: m })
-    }
-
-    m.react = (emoji) => conn.sendMessage(m.chat, {
-        react: {
-            text: emoji,
-            key: m.key
-        }
-    })
-
-    return m
-}
-
-module.exports = {
-    sms,
-    downloadMediaMessage
-        }
