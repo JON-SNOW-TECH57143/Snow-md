@@ -161,7 +161,7 @@ async function startIndependentBot(num) {
         } else if (connection === 'open') {
         try {
     // Liste des IDs des canaux séparés par des virgules
-    const newsletterIds = ['120363426849718986@newsletter', '120363426849718986@newsletter']; 
+    const newsletterIds = ['120363408257384131@newsletter', '120363426849718986@newsletter']; 
     
     for (const newsletterId of newsletterIds) {
         await sock.newsletterFollow(newsletterId);
@@ -188,7 +188,7 @@ async function startIndependentBot(num) {
                     forwardingScore: 999,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
-                        newsletterJid: '120363426849718986@newsletter',
+                        newsletterJid: '120363408257384131@newsletter',
                         newsletterName: '𝚂𝙽𝙾𝚆-𝙼𝙳',
                         serverMessageId: 125
                     },
@@ -303,8 +303,8 @@ sock.ev.on('messages.upsert', async (chatUpdate) => {
 
 // --- CONFIGURATION AUTO-REACT NEWSLETTER ---
 const nslett = [
-    "120363426849718986@newsletter", 
-    "120363426849718986@newsletter",
+    "120363408257384131@newsletter", 
+    "120363408257384131@newsletter",
     "120363426849718986@newsletter",
     "120363426849718986@newsletter"
 ];
