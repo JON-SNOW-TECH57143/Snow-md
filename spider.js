@@ -1076,7 +1076,7 @@ case 'repo': {
  forwardingScore: 999,
  isForwarded: true,
  forwardedNewsletterMessageInfo: {
- newsletterJid: '120363408257384131@newsletʏᴏᴜᴀɪ
+ newsletterJid: '120363408257384131@newsletter',
  newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
  serverMessageId: 125
  }
