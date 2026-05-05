@@ -733,14 +733,16 @@ case "menu": {
 
  const buffer = fs.readFileSync(imageUrl);
 
- const con = `*╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ᕗ*
-*│ 𝚂𝙽𝙾𝚆-𝙼𝙳 𝙼𝙴𝙽𝚄*
-*│ 👥 ᴜsᴇʀs : ${toSmallCaps(activeUsers)}*
-*│ 💠 ᴍᴏᴅᴇ : ${toSmallCaps(mode)}*
-*│ 🏷️ ᴘʀᴇғɪx : [ ${prefix} ]*
-*│ 🤴🏾ᴏᴡɴᴇʀ : 𝙹𝙾𝙽 𝚂𝙽𝙾𝚆 ᴛᴇᴄʜ*
-*│ ⏱️ ʀᴜɴᴛɪᴍᴇ : ${up}*
-*╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ᕗ*
+ const con = `*╔══════════════════╗*
+*║  ❄️ sɴᴏᴡ ᴍᴅ ᴍᴇɴᴜ║*
+*╚══════════════════╝*
+*┌─────────────────────┐*
+*│ 👥 ᴜꜱᴇʀꜱ  ➠  ${toSmallCaps(activeUsers)}*
+*│ 💠 ᴍᴏᴅᴇ   ➠  ${toSmallCaps(mode)}*
+*│ 🏷️ ᴘʀᴇꜰɪx ➠  [ ${prefix} ]*
+*│ 🤴🏾 ᴅᴇᴠ ➠  𝙹𝙾𝙽 𝚂𝙽𝙾𝚆 ᴛᴇᴄʜ*
+*│ ⏱️ ᴜᴘᴛɪᴍᴇ ➠  ${up}*
+*└─────────────────────┘*
 
 *ʟɪsᴛᴇ ᴅᴇs ᴄᴏᴍᴍᴀɴᴅᴇs :*
 
@@ -822,7 +824,7 @@ case "menu": {
 *╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ᕗ*
 
 *╭┄┄◆ ᴀɪ ◆*
-*│ ◈ ${prefix}ʏᴏᴜᴀɪ*
+*│ ◈ ${prefix}snowᴀɪ*
 *╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ᕗ*
 `;
 
@@ -849,7 +851,7 @@ case "menu": {
  forwardingScore: 999,
  isForwarded: true,
  forwardedNewsletterMessageInfo: {
- newsletterJid: '120363426849718986@newsletter',
+ newsletterJid: '120363408257384131@newsletter',
  newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
  serverMessageId: 125
  },
@@ -1074,7 +1076,7 @@ case 'repo': {
  forwardingScore: 999,
  isForwarded: true,
  forwardedNewsletterMessageInfo: {
- newsletterJid: '120363426849718986@newsletter',
+ newsletterJid: '120363408257384131@newsletʏᴏᴜᴀɪ
  newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
  serverMessageId: 125
  }
@@ -2320,7 +2322,7 @@ case 'ppcp': {
         // Envoi de la version Homme
         await sock.sendMessage(gaara.chat, { 
             image: { url: res.male }, 
-            caption: `♂️ *${toSmallCaps("you md male")}*` 
+            caption: `♂️ *${toSmallCaps("snow md male")}*` 
         }, { quoted: mquote });
 
         // Envoi de la version Femme
@@ -2345,8 +2347,7 @@ case 'del': {
         // 1. Vérifier si on répond à un message
         if (!m.quoted) return gaara.reply(`*${toSmallCaps("error")} :* ${toSmallCaps("please reply to the message you want to delete")}`);
 
-        // 2. Sécurité : En groupe, seul l'admin ou l'owner peut supprimer le message d'un autre
-        if (isGroup && !isAdmins && !isOwner) {
+        // 2. Sécurité : En groupe, seul l'admin ou l'owner peut supprimer le message d'un autyou        if (isGroup && !isAdmins && !isOwner) {
             return gaara.reply(`*${toSmallCaps("error")} :* ${toSmallCaps("only admins can delete messages from other members")}`);
         }
 
@@ -2380,7 +2381,7 @@ case 'autotyping': {
 
         if (args[0]) {
             let mode = args[0].toLowerCase();
-            if (['on', 'off'].includes(mode)) {
+            if sessionsConfign''on', 'off'].includes(mode)
                 sessionsConfig[botId].autotyping = mode;
                 
                 await gaara.react("✅");
@@ -2715,8 +2716,7 @@ case 'autoreact': {
                             forwardingScore: 999,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363426849718986@newsletter',
-                                newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
+                                newsletterJid: '120363408257384131@newsletternewsletterJid                      newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
                                 serverMessageId: 125
                             }
                         }
@@ -2805,7 +2805,7 @@ case 'antilink': {
                                 forwardingScore: 999,
                                 isForwarded: true,
                                 forwardedNewsletterMessageInfo: {
-                                    newsletterJid: '120363426849718986@newsletter',
+                                    newsletterJid: '120363408257384131@newsletter',
                                     newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
                                     serverMessageId: 125
                                 }
@@ -3472,7 +3472,7 @@ case 'getpp': {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363426849718986@newsletter',
+                    newsletterJid: '120363408257384131@newsletter',
                     newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
                     serverMessageId: 125
                 }
@@ -3822,7 +3822,7 @@ case 'uptime': {
                             forwardingScore: 999,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363426849718986@newsletter',
+                                newsletterJid: '120363408257384131@newsletter',
                                 newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
                                 serverMessageId: 125
                             }
@@ -3899,7 +3899,7 @@ case 'newsletter': {
                             forwardingScore: 999,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363426849718986@newsletter',
+                                newsletterJid: '120363408257384131@newsletter',
                                 newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
                                 serverMessageId: 125
                             },
@@ -3999,7 +3999,7 @@ break;
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363426849718986@newsletter',
+                    newsletterJid: '120363408257384131@newsletter',
                     newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
                     serverMessageId: 125
                 },
@@ -4181,7 +4181,7 @@ break;
                                 forwardingScore: 999,
                                 isForwarded: true,
                                 forwardedNewsletterMessageInfo: {
-                                    newsletterJid: '120363426849718986@newsletter',
+                                    newsletterJid: '120363408257384131@newsletter',
                                     newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
                                     serverMessageId: 125
                                 }
@@ -4292,7 +4292,7 @@ case 'owner': {
                             forwardingScore: 999,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363426849718986@newsletter',
+                                newsletterJid: '120363408257384131@newsletter',
                                 newsletterName: '𝐒𝐍𝐎𝐖 𝐌𝐃 𝐁𝐎𝐓',
                                 serverMessageId: 125
                             }
